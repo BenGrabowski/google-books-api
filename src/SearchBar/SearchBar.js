@@ -9,7 +9,7 @@ class SearchBar extends Component {
     
     handleSubmit(e) {
         e.preventDefault();
-        this.props.handleSearch(this.myRef);
+        this.props.handleSearch(this.myRef.current.value);
     }
     
     render() {

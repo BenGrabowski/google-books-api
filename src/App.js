@@ -22,26 +22,30 @@ class App extends React.Component {
     console.log(term);
     console.log(url);
     
-    // fetch(url)
-    // .then(response => {
-    //   if(!response.ok) {
-    //     throw new Error('Something went wrong, please try again later');
-    //   } else{
-    //     return response.json();
-    //   }
-    // })
-    // .then(data => {
-    //   const books = data.items.map(book => book.volumeInfo)
+    fetch(url)
+    .then(response => {
+      if(!response.ok) {
+        throw new Error('Something went wrong, please try again later');
+      } else{
+        return response.json();
+      }
+    })
+    .then(data => {
+      const books = data.items.map(book => book.volumeInfo)
       
-    //   this.setState({
-    //     books
-    //   })
-    // })
-    // .catch(error => {
-    //   this.setState({
-    //     error: error.message
-    //   });
-    // });
+      this.setState({
+        books
+      })
+    })
+    .catch(error => {
+      this.setState({
+        error: error.message
+      });
+    });
+
+    this.setState({
+      searchTerm: term
+    });
   }
   
 

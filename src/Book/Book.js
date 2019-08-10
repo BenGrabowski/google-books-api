@@ -4,7 +4,7 @@ import './Book.css';
 class Book extends Component {
     render() {
         return (
-            <p>Hello Ben</p>
+            <p></p>
         )
     }
 }
