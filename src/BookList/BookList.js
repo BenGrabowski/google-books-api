@@ -10,6 +10,10 @@ class BookList extends Component {
                         title={book.title}
                         author={book.authors[0]}
                         price={book.price}
+                        subtitle={book.subtitle}
+                        description={book.description}
+                        image={book.imageLinks.smallThumbnail}
+                        printType={book.printType}
                         />
         });
         

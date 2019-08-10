@@ -10,7 +10,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       searchTerm: '',
-      printType: '',
+      printType: 'all',
       bookType: '',
       books: []
     };
@@ -18,7 +18,9 @@ class App extends React.Component {
 
   handleSearch(term) {
     const query = encodeURIComponent(term);
-    const url = `https://www.googleapis.com/books/v1/volumes?q=${query}&key=AIzaSyDoLZmFxyg6izNhLzuqo-f6wjqoYJ3Kcr8`;
+    const printType = this.state.printType;
+    const bookType = this.state.bookType;
+    const url = `https://www.googleapis.com/books/v1/volumes?q=${query}&printType=${printType}&filter=${bookType}&key=AIzaSyDoLZmFxyg6izNhLzuqo-f6wjqoYJ3Kcr8`;
     console.log(term);
     console.log(url);
     
@@ -66,7 +68,9 @@ class App extends React.Component {
       <div className="App">
         <Header />
         <SearchBar handleSearch={term => this.handleSearch(term)} />
-        <Filters />
+        <Filters 
+          changePrintType={type => this.updatePrintType(type)}
+          changeBookType={bookType => this.updateBookType(bookType)}/>
         <BookList books={this.state.books} />
       </div>
     );
