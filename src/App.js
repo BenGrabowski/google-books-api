@@ -11,16 +11,18 @@ class App extends React.Component {
     this.state = {
       searchTerm: '',
       printType: 'all',
-      bookType: '',
+      bookType: 'partial',
       books: []
     };
   }
 
   handleSearch(term) {
     const query = encodeURIComponent(term);
-    const printType = this.state.printType;
-    const bookType = this.state.bookType;
+    // const query = term;
+    const printType = encodeURIComponent(this.state.printType);
+    const bookType = encodeURIComponent(this.state.bookType);
     const url = `https://www.googleapis.com/books/v1/volumes?q=${query}&printType=${printType}&filter=${bookType}&key=AIzaSyDoLZmFxyg6izNhLzuqo-f6wjqoYJ3Kcr8`;
+    // const url = 'https://www.googleapis.com/books/v1/volumes?key=AIzaSyDoLZmFxyg6izNhLzuqo-f6wjqoYJ3Kcr8&q=Colorado&printType=books&filter=full'
     console.log(term);
     console.log(url);
     
