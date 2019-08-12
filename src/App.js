@@ -12,7 +12,8 @@ class App extends React.Component {
       searchTerm: '',
       printType: 'all',
       bookType: 'partial',
-      books: []
+      books: [],
+      selected: -1
     };
   }
 
@@ -64,6 +65,12 @@ class App extends React.Component {
       bookType: bookType
     })
   }
+
+  setSelected(key) {
+    this.setState({
+      selected: key
+    });
+  }
   
   render() {
     return (
@@ -73,7 +80,10 @@ class App extends React.Component {
         <Filters 
           changePrintType={type => this.updatePrintType(type)}
           changeBookType={bookType => this.updateBookType(bookType)}/>
-        <BookList books={this.state.books} />
+        <BookList 
+          books={this.state.books}
+          selected={this.state.selected}
+          setSelected={key => this.setSelected(key)} />
       </div>
     );
   }

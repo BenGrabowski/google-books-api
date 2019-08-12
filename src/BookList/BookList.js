@@ -5,15 +5,19 @@ import Book from '../Book/Book';
 class BookList extends Component {
     render() {
         const bookList = this.props.books.map((book, index) => {
+            const author = book.author ? book.author[0] : "";
+            
             return <Book
                         key={index}
                         title={book.title}
-                        author={book.authors[0]}
+                        author={author}
                         price={book.price}
                         subtitle={book.subtitle}
                         description={book.description}
                         image={book.imageLinks.smallThumbnail}
                         printType={book.printType}
+                        selected={this.props.selected}
+                        setSelected={this.props.setSelected}
                         />
         });
         
