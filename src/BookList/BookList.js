@@ -9,6 +9,7 @@ class BookList extends Component {
             
             return <Book
                         key={index}
+                        index={index}
                         title={book.title}
                         author={author}
                         price={book.price}

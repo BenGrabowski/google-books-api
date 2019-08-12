@@ -66,9 +66,11 @@ class App extends React.Component {
     })
   }
 
-  setSelected(key) {
+  setSelected(index) {
+    console.log(index);
+    
     this.setState({
-      selected: key
+      selected: index
     });
   }
   
